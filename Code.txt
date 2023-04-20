@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Notepad</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: linear-gradient(to bottom, #ffcccc, #99ccff);
+		}
+
+		h1 {
+			margin-top: 20px;
+		}
+
+		#notepad {
+			width: 80%;
+			height: 300px;
+			resize: none;
+			padding: 10px;
+			margin: 20px;
+			font-size: 16px;
+			border: 1px solid gray;
+			border-radius: 5px;
+		}
+
+		button {
+			padding: 10px 20px;
+			margin-right: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		#file-type {
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: 1px solid gray;
+		}
+
+		#file-input {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Notepad</h1>
+	<textarea id="notepad"></textarea>
+	<br><br>
+	<button onclick="saveFile()">Save</button>
+	<input type="file" id="file-input">
+	<button onclick="document.getElementById('file-input').click();">Upload</button>
+
+	<script>
+		function saveFile() {
+			var textToSave = document.getElementById("notepad").value;
+			var fileTypes = [
+				{
+					name: "Text Document",
+					extension: "txt"
+				},
+				{
+					name: "HTML Document",
+					extension: "html"
+				},
+				{
+					name: "JSON Document",
+					extension: "json"
+				}
+			];
+			var fileData = new Blob([textToSave], {type: "text/plain;charset=utf-8"});
+			var fileName = "notepad." + fileTypes[document.getElementById("file-type").selectedIndex].extension;
+			var saveLink = document.createElement("a
+			saveLink.href = URL.createObjectURL(fileData);
+			saveLink.download = fileName;
+			saveLink.click();
+		}
+
+		document.getElementById("file-input").addEventListener("change", function(event) {
+			var file = event.target.files[0];
+			var reader = new FileReader();
+			reader.onload = function() {
+				document.getElementById("notepad").value = reader.result;
+			};
+			reader.readAsText(file);
+		});
+	</script>
+
+	<p>Select file type:</p>
+	<select id="file-type">
+		<option value="0">Text Document (.txt)</option>
+		<option value="1">HTML Document (.html)</option>
+		<option value="2">JSON Document (.json)</option>
+	</select>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Notepad</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: linear-gradient(to bottom, #ffcccc, #99ccff);
+		}
+
+		h1 {
+			margin-top: 20px;
+		}
+
+		#notepad {
+			width: 80%;
+			height: 300px;
+			resize: none;
+			padding: 10px;
+			margin: 20px;
+			font-size: 16px;
+			border: 1px solid gray;
+			border-radius: 5px;
+		}
+
+		button {
+			padding: 10px 20px;
+			margin-right: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		#file-type {
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: 1px solid gray;
+		}
+
+		#file-input {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Notepad</h1>
+	<textarea id="notepad"></textarea>
+	<br><br>
+	<button onclick="saveFile()">Save</button>
+	<input type="file" id="file-input">
+	<button onclick="document.getElementById('file-input').click();">Upload</button>
+
+	<script>
+		function saveFile() {
+			var textToSave = document.getElementById("notepad").value;
+			var fileTypes = [
+				{
+					name: "Text Document",
+					extension: "txt"
+				},
+				{
+					name: "HTML Document",
+					extension: "html"
+				},
+				{
+					name: "JSON Document",
+					extension: "json"
+				}
+			];
+			var fileData = new Blob([textToSave], {type: "text/plain;charset=utf-8"});
+			var fileName = "notepad." + fileTypes[document.getElementById("file-type").selectedIndex].extension;
+			var saveLink = document.createElement("a
+			saveLink.href = URL.createObjectURL(fileData);
+			saveLink.download = fileName;
+			saveLink.click();
+		}
+
+		document.getElementById("file-input").addEventListener("change", function(event) {
+			var file = event.target.files[0];
+			var reader = new FileReader();
+			reader.onload = function() {
+				document.getElementById("notepad").value = reader.result;
+			};
+			reader.readAsText(file);
+		});
+	</script>
+
+	<p>Select file type:</p>
+	<select id="file-type">
+		<option value="0">Text Document (.txt)</option>
+		<option value="1">HTML Document (.html)</option>
+		<option value="2">JSON Document (.json)</option>
+	</select>
+</body>
+</html>
